@@ -1,10 +1,19 @@
+<div class="container mb-4">
 <h1>New Place</h1>
+</div>
 
-<form action="/places" method="post">
-  <p>
-    <label for="name_input">Name</label>
-    <input type="text" name="name" id="name_input">
-  </p>
+<div class="container">
+<% @user = User.find_by({"id" => session["user_id"]}) %>
+    <% if @user != nil %>
+        <form action="/places" method="post">
+          <p>
+            <label for="name_input">Name</label>
+            <input type="text" name="name" id="name_input">
+          </p>
+          <button class="btn btn-outline-secondary">Save</button>
+          </form>
+      <% else %>
+      You must first <a href="/login"> log in</a> to add a new place.
 
-  <button>Save</button>
-</form>
+      <% end %>
+</div>
