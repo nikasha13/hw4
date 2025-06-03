@@ -4,7 +4,7 @@
 <% @user = User.find_by({"id" => session["user_id"]}) %>
     <% if @user != nil %>
 <div class="container">
-<form action="/entries" method="post">
+<form action="/entries" method="post" enctype="multipart/form-data">
   <input type="hidden" name="place_id" value="<%= params["place_id"] %>">
 
   <p>
@@ -16,6 +16,11 @@
     <label for="description_input">Description</label>
     <input type="text" name="description" id="description_input">
   </p>
+
+<p>
+   <label for="uploaded_image_input" class="form-label">Upload Image</label>
+   <input type="file" name="uploaded_image" id="uploaded_image_input" class="form-control" accept="image/png, image/jpg, image/jpeg, image/gif">
+</p>
 
   <p>
     <label for="occurred_on_input">Occurred On</label>
